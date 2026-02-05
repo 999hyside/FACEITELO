@@ -26,363 +26,259 @@ body {
   position: absolute;
   top: 30px;
   left: 30px;
-  background: linear-gradient(145deg, rgba(12, 15, 22, 0.88) 0%, rgba(18, 21, 29, 0.92) 100%);
-  border-radius: 14px;
-  border: 1px solid rgba(255, 85, 0, 0.35);
-  box-shadow: 
-    0 16px 56px rgba(0, 0, 0, 0.8),
-    0 0 1px 1px rgba(255, 85, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  overflow: hidden;
-  width: 330px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.accent-bar {
-  height: 3px;
-  background: linear-gradient(90deg, #FF5500 0%, #FF9944 50%, #FF5500 100%);
-  background-size: 200% 100%;
-  animation: shimmer 4s ease-in-out infinite;
-  box-shadow: 0 0 16px rgba(255, 85, 0, 0.8);
-}
-
-@keyframes shimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-.hud-header {
-  padding: 18px 24px;
-  background: linear-gradient(135deg, rgba(255, 85, 0, 0.12) 0%, rgba(255, 85, 0, 0.04) 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.faceit-icon {
-  width: 36px;
-  height: 36px;
-  background: linear-gradient(135deg, #FF5500 0%, #FF7733 100%);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 17px;
-  box-shadow: 
-    0 6px 16px rgba(255, 85, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.faceit-icon::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2), transparent 70%);
-  animation: iconShine 3s ease-in-out infinite;
-}
-
-@keyframes iconShine {
-  0%, 100% { transform: translateX(-150%) rotate(45deg); }
-  50% { transform: translateX(150%) rotate(45deg); }
-}
-
-.header-text {
-  flex: 1;
-}
-
-#title {
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 2.4px;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(255, 85, 0, 0.4);
-}
-
-.subtitle {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.55);
-  font-weight: 500;
-  margin-top: 4px;
-  letter-spacing: 0.8px;
-}
-
-.hud-body {
-  padding: 22px 24px 24px;
-}
-
-.elo-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-  background: linear-gradient(135deg, rgba(255, 85, 0, 0.1) 0%, rgba(255, 85, 0, 0.04) 100%);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 85, 0, 0.22);
-  margin-bottom: 18px;
-  position: relative;
-  overflow: hidden;
-}
-
-.elo-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 25% 50%, rgba(255, 85, 0, 0.15) 0%, transparent 65%);
-}
-
-.elo-info {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  position: relative;
-  z-index: 1;
-}
-
-.elo-label {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.4px;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.elo-value {
-  font-size: 40px;
-  font-weight: 900;
-  color: #fff;
-  line-height: 1;
-  letter-spacing: -2px;
-  text-shadow: 
-    0 0 24px rgba(255, 85, 0, 0.6),
-    0 3px 6px rgba(0, 0, 0, 0.7);
-}
-
-.level-badge {
-  background: linear-gradient(135deg, rgba(255, 85, 0, 0.32) 0%, rgba(255, 85, 0, 0.18) 100%);
-  border: 2px solid rgba(255, 85, 0, 0.5);
-  border-radius: 10px;
-  padding: 10px 14px;
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  width: 280px;
+}
+
+.card {
+  background: linear-gradient(135deg, rgba(20, 22, 28, 0.95) 0%, rgba(15, 17, 22, 0.92) 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 18px 20px;
+  display: flex;
   align-items: center;
-  gap: 3px;
-  min-width: 60px;
-  position: relative;
-  z-index: 1;
+  gap: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   box-shadow: 
-    0 6px 16px rgba(255, 85, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
 }
 
-.level-label {
-  font-size: 9px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.level-value {
-  font-size: 22px;
-  font-weight: 900;
-  color: #FF5500;
-  line-height: 1;
-  text-shadow: 0 0 16px rgba(255, 85, 0, 0.7);
-}
-
-.elo-diff {
-  text-align: center;
-  font-size: 15px;
-  font-weight: 800;
-  margin-bottom: 18px;
-  min-height: 22px;
-}
-
-.winloss-section {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
-  padding: 18px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-.winloss-label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.4px;
-  color: rgba(255, 255, 255, 0.55);
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.winloss-display {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 14px;
-  margin-bottom: 14px;
-}
-
-.win-stat, .loss-stat {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-
-.stat-number {
-  font-size: 28px;
-  font-weight: 900;
-}
-
-.stat-label {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--accent-color) 0%, transparent 100%);
   opacity: 0.8;
 }
 
-.separator {
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 22px;
-  font-weight: 300;
+/* ELO Card */
+.card-elo {
+  --accent-color: #FF5500;
 }
 
-.winrate-bar {
-  width: 100%;
-  height: 5px;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top: 12px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.winrate-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
-  border-radius: 5px;
-  box-shadow: 0 0 12px rgba(74, 222, 128, 0.8);
-  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-}
-
-.winrate-fill::after {
+.card-elo::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-  animation: barShine 2.5s ease-in-out infinite;
-}
-
-@keyframes barShine {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.winrate-percent {
-  text-align: center;
-  font-size: 12px;
-  font-weight: 800;
-  color: #4ade80;
-  margin-top: 10px;
-  text-shadow: 0 0 12px rgba(74, 222, 128, 0.6);
-}
-
-.green { 
-  color: #4ade80;
-  text-shadow: 0 0 16px rgba(74, 222, 128, 0.8);
-}
-
-.red { 
-  color: #f87171;
-  text-shadow: 0 0 16px rgba(248, 113, 113, 0.8);
-}
-
-#glow {
-  position: absolute;
-  right: 40px;
-  bottom: 40px;
-  width: 480px;
-  height: 480px;
-  border-radius: 30px;
-  background: radial-gradient(circle, rgba(255, 85, 0, 0.5) 0%, rgba(168, 85, 247, 0.4) 50%, rgba(0, 240, 255, 0.3) 100%);
-  filter: blur(50px);
-  opacity: 0;
-  animation: glowPulse 6s ease-in-out infinite;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255, 85, 0, 0.15) 0%, transparent 70%);
   pointer-events: none;
 }
 
-@keyframes glowPulse {
+/* Level Card */
+.card-level {
+  --accent-color: #FF5500;
+}
+
+.card-level::after {
+  content: '';
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255, 85, 0, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Winrate Card */
+.card-winrate {
+  --accent-color: #4ade80;
+}
+
+.card-winrate::after {
+  content: '';
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Icon styles */
+.card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 22px;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.icon-elo {
+  background: linear-gradient(135deg, #FF5500 0%, #FF7733 100%);
+}
+
+.icon-level {
+  background: linear-gradient(135deg, #FF5500 0%, #FF7733 100%);
+  border: 3px solid rgba(255, 85, 0, 0.4);
+}
+
+.icon-winrate {
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  font-size: 18px;
+}
+
+/* Card content */
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.card-value {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.card-value-small {
+  font-size: 24px;
+}
+
+.value-trend {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.trend-up {
+  color: #4ade80;
+  text-shadow: 0 0 12px rgba(74, 222, 128, 0.6);
+}
+
+.trend-down {
+  color: #f87171;
+  text-shadow: 0 0 12px rgba(248, 113, 113, 0.6);
+}
+
+/* Win/Loss display */
+.wl-display {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.wl-separator {
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.wl-wins {
+  color: #4ade80;
+  text-shadow: 0 0 12px rgba(74, 222, 128, 0.6);
+}
+
+.wl-losses {
+  color: #f87171;
+  text-shadow: 0 0 12px rgba(248, 113, 113, 0.6);
+}
+
+/* Progress bar */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 6px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+  border-radius: 4px;
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.8);
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* === CSAK EVENT ANIMÁCIÓK === */
+
+/* Érték pulse amikor változik */
+.value-pulse {
+  animation: valuePulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes valuePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* Card flash win-nél */
+.card-flash-win {
+  animation: cardFlashWin 0.6s ease;
+}
+
+@keyframes cardFlashWin {
   0%, 100% { 
-    opacity: 0.25;
-    transform: scale(0.94) rotate(0deg);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   }
   50% { 
-    opacity: 0.5;
-    transform: scale(1.08) rotate(12deg);
+    border-color: rgba(74, 222, 128, 0.6);
+    box-shadow: 0 8px 32px rgba(74, 222, 128, 0.4);
   }
 }
 
-.elo-pulse {
-  animation: eloPulse 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+/* Card flash loss-nál */
+.card-flash-loss {
+  animation: cardFlashLoss 0.6s ease;
 }
 
-@keyframes eloPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.18); }
-}
-
-.win-bounce {
-  animation: winBounce 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes winBounce {
-  0%, 100% { transform: scale(1); }
+@keyframes cardFlashLoss {
+  0%, 100% { 
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  }
   50% { 
-    transform: scale(1.4);
-    filter: drop-shadow(0 0 24px #4ade80);
+    border-color: rgba(248, 113, 113, 0.6);
+    box-shadow: 0 8px 32px rgba(248, 113, 113, 0.4);
   }
 }
 
-.loss-bounce {
-  animation: lossBounce 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes lossBounce {
-  0%, 100% { transform: scale(1); }
-  50% { 
-    transform: scale(1.4);
-    filter: drop-shadow(0 0 24px #f87171);
-  }
-}
-
-.elo-gain {
-  animation: eloGain 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes eloGain {
-  0% { transform: translateY(30px) scale(0.7); opacity: 0; }
-  60% { transform: translateY(-8px) scale(1.12); }
-  100% { transform: translateY(0) scale(1); opacity: 1; }
-}
-
-.elo-loss {
-  animation: eloLoss 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes eloLoss {
-  0% { transform: translateY(-30px) scale(0.7); opacity: 0; }
-  60% { transform: translateY(8px) scale(1.12); }
-  100% { transform: translateY(0) scale(1); opacity: 1; }
-}
-
+/* Screen flash */
 #screenFlash {
   position: fixed;
   inset: 0;
@@ -413,52 +309,48 @@ body {
 <body>
 
 <div id="hud">
-  <div class="accent-bar"></div>
-  
-  <div class="hud-header">
-    <div class="faceit-icon">F</div>
-    <div class="header-text">
-      <div id="title">FACEIT</div>
-      <div class="subtitle">Counter-Strike 2</div>
+  <!-- ELO Card -->
+  <div class="card card-elo">
+    <div class="card-icon icon-elo">F</div>
+    <div class="card-content">
+      <div class="card-label">FACEIT ELO</div>
+      <div class="card-value">
+        <span id="elo">----</span>
+        <span class="value-trend" id="eloDiff"></span>
+      </div>
     </div>
   </div>
-  
-  <div class="hud-body">
-    <div class="elo-section">
-      <div class="elo-info">
-        <span class="elo-label">ELO</span>
-        <span class="elo-value" id="elo">----</span>
-      </div>
-      <div class="level-badge">
-        <span class="level-label">LVL</span>
-        <span class="level-value" id="lvl">-</span>
+
+  <!-- Level Card -->
+  <div class="card card-level">
+    <div class="card-icon icon-level" id="levelIcon">-</div>
+    <div class="card-content">
+      <div class="card-label">LEVEL</div>
+      <div class="card-value card-value-small">
+        <span>Level <span id="lvl">-</span></span>
       </div>
     </div>
-    
-    <div class="elo-diff" id="eloDiff"></div>
-    
-    <div class="winloss-section">
-      <div class="winloss-label">Match Record</div>
-      <div class="winloss-display">
-        <div class="win-stat">
-          <span class="stat-number green" id="wins">-</span>
-          <span class="stat-label green">W</span>
-        </div>
-        <span class="separator">/</span>
-        <div class="loss-stat">
-          <span class="stat-number red" id="losses">-</span>
-          <span class="stat-label red">L</span>
-        </div>
+  </div>
+
+  <!-- Win/Loss Card -->
+  <div class="card card-winrate">
+    <div class="card-icon icon-winrate">
+      <span id="winratePercent">-%</span>
+    </div>
+    <div class="card-content">
+      <div class="card-label">MATCH RECORD</div>
+      <div class="wl-display">
+        <span class="wl-wins" id="wins">-</span>
+        <span class="wl-separator">/</span>
+        <span class="wl-losses" id="losses">-</span>
       </div>
-      <div class="winrate-bar">
-        <div class="winrate-fill" id="winrateFill"></div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="winrateFill"></div>
       </div>
-      <div class="winrate-percent" id="winratePercent">-%</div>
     </div>
   </div>
 </div>
 
-<div id="glow"></div>
 <div id="screenFlash"></div>
 
 <script>
@@ -466,13 +358,17 @@ const API_URL = "https://api.jakobkristensen.com/76561198252968768";
 
 const elements = {
   lvl: document.getElementById("lvl"),
+  levelIcon: document.getElementById("levelIcon"),
   elo: document.getElementById("elo"),
   wins: document.getElementById("wins"),
   losses: document.getElementById("losses"),
   eloDiff: document.getElementById("eloDiff"),
   winrateFill: document.getElementById("winrateFill"),
   winratePercent: document.getElementById("winratePercent"),
-  screenFlash: document.getElementById("screenFlash")
+  screenFlash: document.getElementById("screenFlash"),
+  cardElo: document.querySelector('.card-elo'),
+  cardLevel: document.querySelector('.card-level'),
+  cardWinrate: document.querySelector('.card-winrate')
 };
 
 let previousData = {
@@ -486,15 +382,16 @@ function triggerScreenFlash(isWin) {
   setTimeout(() => elements.screenFlash.className = '', 700);
 }
 
-function animateEloChange(isGain) {
-  elements.elo.classList.add(isGain ? 'elo-gain' : 'elo-loss');
-  setTimeout(() => elements.elo.classList.remove('elo-gain', 'elo-loss'), 900);
+function animateCard(card, isWin) {
+  card.classList.add(isWin ? 'card-flash-win' : 'card-flash-loss');
+  setTimeout(() => {
+    card.classList.remove('card-flash-win', 'card-flash-loss');
+  }, 600);
 }
 
-function animateWinLoss(type) {
-  const element = type === 'win' ? elements.wins.parentElement : elements.losses.parentElement;
-  element.classList.add(type === 'win' ? 'win-bounce' : 'loss-bounce');
-  setTimeout(() => element.classList.remove('win-bounce', 'loss-bounce'), 700);
+function pulseValue(element) {
+  element.classList.add('value-pulse');
+  setTimeout(() => element.classList.remove('value-pulse'), 600);
 }
 
 async function updateFaceit() {
@@ -506,40 +403,48 @@ async function updateFaceit() {
     const winChanged = previousData.wins !== null && previousData.wins !== d.results.wins;
     const lossChanged = previousData.losses !== null && previousData.losses !== d.results.losses;
     
+    // ELO változás
     if (eloChanged) {
       const isGain = d.elo > previousData.elo;
-      animateEloChange(isGain);
-      elements.elo.classList.add('elo-pulse');
-      setTimeout(() => elements.elo.classList.remove('elo-pulse'), 700);
+      pulseValue(elements.elo);
+      animateCard(elements.cardElo, isGain);
     }
     
+    // Win változás
     if (winChanged && d.results.wins > previousData.wins) {
       triggerScreenFlash(true);
-      animateWinLoss('win');
+      pulseValue(elements.wins);
+      animateCard(elements.cardWinrate, true);
     }
     
+    // Loss változás
     if (lossChanged && d.results.losses > previousData.losses) {
       triggerScreenFlash(false);
-      animateWinLoss('loss');
+      pulseValue(elements.losses);
+      animateCard(elements.cardWinrate, false);
     }
     
+    // Adatok frissítése
     elements.lvl.textContent = d.lvl;
+    elements.levelIcon.textContent = d.lvl;
     elements.elo.textContent = d.elo;
     elements.wins.textContent = d.results.wins;
     elements.losses.textContent = d.results.losses;
     
+    // Winrate
     const totalGames = d.results.wins + d.results.losses;
     const winrate = totalGames > 0 ? (d.results.wins / totalGames * 100) : 0;
     elements.winrateFill.style.width = winrate + '%';
     elements.winratePercent.textContent = winrate.toFixed(0) + '%';
     
+    // ELO diff
     const diff = d.todayEloDiff;
     if (diff && diff.startsWith("+")) {
-      elements.eloDiff.innerHTML = `<span class="green">▲ ${diff} today</span>`;
+      elements.eloDiff.innerHTML = `<span class="trend-up">▲${diff}</span>`;
     } else if (diff && diff.startsWith("-")) {
-      elements.eloDiff.innerHTML = `<span class="red">▼ ${diff} today</span>`;
+      elements.eloDiff.innerHTML = `<span class="trend-down">▼${diff}</span>`;
     } else {
-      elements.eloDiff.innerHTML = `<span style="color: rgba(255,255,255,0.35); font-size: 12px;">—</span>`;
+      elements.eloDiff.innerHTML = '';
     }
     
     previousData = {
