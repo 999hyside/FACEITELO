@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<title>FACEIT HUD</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: transparent;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+#hud {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  background: linear-gradient(145deg, #0f1419 0%, #1a1f2e 100%);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 85, 0, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 85, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  width: 300px;
+}
+
+.accent-bar {
+  height: 2px;
+  background: linear-gradient(90deg, #FF5500 0%, #FF7733 100%);
+  box-shadow: 0 0 8px rgba(255, 85, 0, 0.5);
+}
+
+.hud-header {
+  padding: 14px 20px;
+  background: rgba(255, 85, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.faceit-icon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #FF5500 0%, #FF7733 100%);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: -0.5px;
+  box-shadow: 
+    0 3px 8px rgba(255, 85, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.header-text {
+  flex: 1;
+}
+
+#title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+}
+
+.subtitle {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 500;
+  margin-top: 3px;
+  letter-spacing: 0.5px;
+}
+
+.hud-body {
+  padding: 18px 20px 20px;
+}
+
+/* ELO Display */
+.elo-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(255, 85, 0, 0.04);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 85, 0, 0.12);
+  margin-bottom: 14px;
+}
+
+.elo-info {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.elo-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.elo-value {
+  font-size: 32px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-shadow: 0 0 16px rgba(255, 85, 0, 0.3);
+}
+
+.level-badge {
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.2) 0%, rgba(255, 85, 0, 0.1) 100%);
+  border: 1.5px solid rgba(255, 85, 0, 0.4);
+  border-radius: 6px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 50px;
+}
+
+.level-label {
+  font-size: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.level-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: #FF5500;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(255, 85, 0, 0.4);
+}
+
+/* ELO Diff */
+.elo-diff {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  min-height: 18px;
+}
+
+/* Win/Loss Section */
+.winloss-section {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.winloss-label {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.winloss-display {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.win-stat, .loss-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.stat-number {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+  font-weight: 300;
+}
+
+/* Winrate Bar */
+.winrate-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 8px;
+}
+
+.winrate-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 3px;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
+}
+
+.winrate-percent {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: #4ade80;
+  margin-top: 6px;
+}
+
+.orange { color: #FF5500; }
+.green { color: #4ade80; }
+.red { color: #f87171; }
+
+/* Glow */
+#glow {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  width: 420px;
+  height: 420px;
+  border-radius: 24px;
+  background: radial-gradient(circle, rgba(255, 85, 0, 0.35) 0%, rgba(168, 85, 247, 0.25) 50%, rgba(0, 240, 255, 0.15) 100%);
+  filter: blur(35px);
+  opacity: 0;
+  animation: glowPulse 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes glowPulse {
+  0%, 100% { 
+    opacity: 0.18;
+    transform: scale(0.96);
+  }
+  50% { 
+    opacity: 0.32;
+    transform: scale(1.04);
+  }
+}
+
+.update-flash {
+  animation: flash 0.4s ease;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.elo-pulse {
+  animation: eloPulse 0.5s ease;
+}
+
+@keyframes eloPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+</style>
+</head>
+<body>
+
+<div id="hud">
+  <div class="accent-bar"></div>
+  
+  <div class="hud-header">
+    <div class="faceit-icon">F</div>
+    <div class="header-text">
+      <div id="title">FACEIT</div>
+      <div class="subtitle">Counter-Strike 2</div>
+    </div>
+  </div>
+  
+  <div class="hud-body">
+    <div class="elo-section">
+      <div class="elo-info">
+        <span class="elo-label">ELO</span>
+        <span class="elo-value" id="elo">----</span>
+      </div>
+      <div class="level-badge">
+        <span class="level-label">LVL</span>
+        <span class="level-value" id="lvl">-</span>
+      </div>
+    </div>
+    
+    <div class="elo-diff" id="eloDiff"></div>
+    
+    <div class="winloss-section">
+      <div class="winloss-label">Match Record</div>
+      <div class="winloss-display">
+        <div class="win-stat">
+          <span class="stat-number green" id="wins">-</span>
+          <span class="stat-label green">W</span>
+        </div>
+        <span class="separator">/</span>
+        <div class="loss-stat">
+          <span class="stat-number red" id="losses">-</span>
+          <span class="stat-label red">L</span>
+        </div>
+      </div>
+      <div class="winrate-bar">
+        <div class="winrate-fill" id="winrateFill"></div>
+      </div>
+      <div class="winrate-percent" id="winratePercent">-%</div>
+    </div>
+  </div>
+</div>
+
+<div id="glow"></div>
+
+<script>
+const API_URL = "https://api.jakobkristensen.com/76561198252968768";
+
+const elements = {
+  lvl: document.getElementById("lvl"),
+  elo: document.getElementById("elo"),
+  wins: document.getElementById("wins"),
+  losses: document.getElementById("losses"),
+  eloDiff: document.getElementById("eloDiff"),
+  winrateFill: document.getElementById("winrateFill"),
+  winratePercent: document.getElementById("winratePercent")
+};
+
+let previousElo = null;
+
+function flashUpdate(element) {
+  element.classList.add('update-flash');
+  setTimeout(() => element.classList.remove('update-flash'), 400);
+}
+
+function pulseElo(element) {
+  element.classList.add('elo-pulse');
+  setTimeout(() => element.classList.remove('elo-pulse'), 500);
+}
+
+async function updateFaceit() {
+  try {
+    const res = await fetch(API_URL);
+    const d = await res.json();
+    
+    if (previousElo !== null && previousElo !== d.elo) {
+      pulseElo(elements.elo);
+    }
+    previousElo = d.elo;
+    
+    elements.lvl.textContent = d.lvl;
+    elements.elo.textContent = d.elo;
+    elements.wins.textContent = d.results.wins;
+    elements.losses.textContent = d.results.losses;
+    
+    // Winrate számítás
+    const totalGames = d.results.wins + d.results.losses;
+    const winrate = totalGames > 0 ? (d.results.wins / totalGames * 100) : 0;
+    elements.winrateFill.style.width = winrate + '%';
+    elements.winratePercent.textContent = winrate.toFixed(0) + '%';
+    
+    // ELO különbség
+    const diff = d.todayEloDiff;
+    if (diff && diff.startsWith("+")) {
+      elements.eloDiff.innerHTML = `<span class="green">▲ ${diff} today</span>`;
+      flashUpdate(elements.eloDiff);
+    } else if (diff && diff.startsWith("-")) {
+      elements.eloDiff.innerHTML = `<span class="red">▼ ${diff} today</span>`;
+      flashUpdate(elements.eloDiff);
+    } else {
+      elements.eloDiff.innerHTML = `<span style="color: rgba(255,255,255,0.3); font-size: 11px;">No change</span>`;
+    }
+    
+  } catch (e) {
+    console.error('API Error:', e);
+    elements.elo.textContent = "ERR";
+  }
+}
+
+updateFaceit();
+setInterval(updateFaceit, 60000);
+</script>
+
+</body>
+</html>
