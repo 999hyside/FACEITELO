@@ -21,46 +21,74 @@ body {
   position: absolute;
   top: 28px;
   left: 28px;
-  background: linear-gradient(145deg, #0f1419 0%, #1a1f2e 100%);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 85, 0, 0.2);
+  background: linear-gradient(145deg, #0a0d12 0%, #14161f 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 85, 0, 0.25);
   box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(255, 85, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    0 12px 48px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 85, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
   overflow: hidden;
-  width: 300px;
+  width: 320px;
 }
 
 .accent-bar {
-  height: 2px;
-  background: linear-gradient(90deg, #FF5500 0%, #FF7733 100%);
-  box-shadow: 0 0 8px rgba(255, 85, 0, 0.5);
+  height: 3px;
+  background: linear-gradient(90deg, #FF5500 0%, #FF8833 50%, #FF5500 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  box-shadow: 
+    0 0 12px rgba(255, 85, 0, 0.6),
+    0 0 24px rgba(255, 85, 0, 0.3);
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .hud-header {
-  padding: 14px 20px;
-  background: rgba(255, 85, 0, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px 22px;
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.08) 0%, rgba(255, 85, 0, 0.02) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .faceit-icon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   background: linear-gradient(135deg, #FF5500 0%, #FF7733 100%);
-  border-radius: 6px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 900;
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: -0.5px;
   box-shadow: 
-    0 3px 8px rgba(255, 85, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 4px 12px rgba(255, 85, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.faceit-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
 
 .header-text {
@@ -68,24 +96,27 @@ body {
 }
 
 #title {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: #fff;
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1;
 }
 
 .subtitle {
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
   font-weight: 500;
-  margin-top: 3px;
+  margin-top: 4px;
   letter-spacing: 0.5px;
 }
 
 .hud-body {
-  padding: 18px 20px 20px;
+  padding: 20px 22px 22px;
 }
 
 /* ELO Display */
@@ -93,88 +124,112 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
-  background: rgba(255, 85, 0, 0.04);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 85, 0, 0.12);
-  margin-bottom: 14px;
+  padding: 18px;
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.06) 0%, rgba(255, 85, 0, 0.02) 100%);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 85, 0, 0.15);
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.elo-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(255, 85, 0, 0.1) 0%, transparent 70%);
+  opacity: 0.5;
 }
 
 .elo-info {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .elo-label {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   color: rgba(255, 255, 255, 0.5);
 }
 
 .elo-value {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 900;
   color: #fff;
   line-height: 1;
-  letter-spacing: -1px;
-  text-shadow: 0 0 16px rgba(255, 85, 0, 0.3);
+  letter-spacing: -1.5px;
+  text-shadow: 
+    0 0 20px rgba(255, 85, 0, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
 }
 
 .level-badge {
-  background: linear-gradient(135deg, rgba(255, 85, 0, 0.2) 0%, rgba(255, 85, 0, 0.1) 100%);
-  border: 1.5px solid rgba(255, 85, 0, 0.4);
-  border-radius: 6px;
-  padding: 6px 10px;
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.25) 0%, rgba(255, 85, 0, 0.12) 100%);
+  border: 2px solid rgba(255, 85, 0, 0.4);
+  border-radius: 8px;
+  padding: 8px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  min-width: 50px;
+  min-width: 56px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 
+    0 4px 12px rgba(255, 85, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .level-label {
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.8px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .level-value {
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 900;
   color: #FF5500;
   line-height: 1;
-  text-shadow: 0 0 8px rgba(255, 85, 0, 0.4);
+  text-shadow: 0 0 12px rgba(255, 85, 0, 0.5);
 }
 
 /* ELO Diff */
 .elo-diff {
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
-  margin-bottom: 14px;
-  min-height: 18px;
+  margin-bottom: 16px;
+  min-height: 20px;
 }
 
 /* Win/Loss Section */
 .winloss-section {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-  padding: 14px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 .winloss-label {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 8px;
+  letter-spacing: 1.2px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -182,59 +237,80 @@ body {
   display: flex;
   justify-content: center;
   align-items: baseline;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .win-stat, .loss-stat {
   display: flex;
   align-items: baseline;
-  gap: 4px;
+  gap: 5px;
+  transition: all 0.3s ease;
 }
 
 .stat-number {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 800;
+  text-shadow: 0 2px 8px currentColor;
 }
 
 .stat-label {
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 11px;
+  font-weight: 600;
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .separator {
-  color: rgba(255, 255, 255, 0.2);
-  font-size: 18px;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 20px;
   font-weight: 300;
 }
 
 /* Winrate Bar */
 .winrate-bar {
   width: 100%;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 3px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
   overflow: hidden;
   position: relative;
-  margin-top: 8px;
+  margin-top: 10px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .winrate-fill {
   height: 100%;
   background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
-  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 3px;
-  box-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+  position: relative;
+}
+
+.winrate-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: progress-shine 2s ease-in-out infinite;
+}
+
+@keyframes progress-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .winrate-percent {
   text-align: center;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 700;
   color: #4ade80;
-  margin-top: 6px;
+  margin-top: 8px;
+  text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
 }
 
 .orange { color: #FF5500; }
@@ -246,43 +322,120 @@ body {
   position: absolute;
   right: 40px;
   bottom: 40px;
-  width: 420px;
-  height: 420px;
-  border-radius: 24px;
-  background: radial-gradient(circle, rgba(255, 85, 0, 0.35) 0%, rgba(168, 85, 247, 0.25) 50%, rgba(0, 240, 255, 0.15) 100%);
-  filter: blur(35px);
+  width: 440px;
+  height: 440px;
+  border-radius: 26px;
+  background: radial-gradient(circle, rgba(255, 85, 0, 0.4) 0%, rgba(168, 85, 247, 0.3) 50%, rgba(0, 240, 255, 0.2) 100%);
+  filter: blur(40px);
   opacity: 0;
-  animation: glowPulse 4.5s ease-in-out infinite;
+  animation: glowPulse 5s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes glowPulse {
   0%, 100% { 
-    opacity: 0.18;
-    transform: scale(0.96);
+    opacity: 0.2;
+    transform: scale(0.95) rotate(0deg);
   }
   50% { 
-    opacity: 0.32;
-    transform: scale(1.04);
+    opacity: 0.4;
+    transform: scale(1.05) rotate(10deg);
   }
 }
 
+/* Animációk */
 .update-flash {
-  animation: flash 0.4s ease;
+  animation: flash 0.5s ease;
 }
 
 @keyframes flash {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
 }
 
 .elo-pulse {
-  animation: eloPulse 0.5s ease;
+  animation: eloPulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes eloPulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+  50% { transform: scale(1.15); }
+}
+
+/* Win/Loss change animációk */
+.win-bounce {
+  animation: winBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes winBounce {
+  0%, 100% { transform: scale(1); }
+  50% { 
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 16px #4ade80);
+  }
+}
+
+.loss-bounce {
+  animation: lossBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes lossBounce {
+  0%, 100% { transform: scale(1); }
+  50% { 
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 16px #f87171);
+  }
+}
+
+/* Pozitív ELO változás */
+.elo-gain {
+  animation: eloGain 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes eloGain {
+  0% { transform: translateY(20px) scale(0.8); opacity: 0; }
+  50% { transform: translateY(-5px) scale(1.1); }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Negatív ELO változás */
+.elo-loss {
+  animation: eloLoss 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes eloLoss {
+  0% { transform: translateY(-20px) scale(0.8); opacity: 0; }
+  50% { transform: translateY(5px) scale(1.1); }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Screen flash efekt win/loss-hoz */
+#screenFlash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.flash-win {
+  animation: flashWin 0.6s ease-out;
+}
+
+@keyframes flashWin {
+  0% { background: rgba(74, 222, 128, 0.3); opacity: 1; }
+  100% { background: rgba(74, 222, 128, 0); opacity: 0; }
+}
+
+.flash-loss {
+  animation: flashLoss 0.6s ease-out;
+}
+
+@keyframes flashLoss {
+  0% { background: rgba(248, 113, 113, 0.3); opacity: 1; }
+  100% { background: rgba(248, 113, 113, 0); opacity: 0; }
 }
 </style>
 </head>
@@ -335,6 +488,7 @@ body {
 </div>
 
 <div id="glow"></div>
+<div id="screenFlash"></div>
 
 <script>
 const API_URL = "https://api.jakobkristensen.com/76561198252968768";
@@ -346,19 +500,36 @@ const elements = {
   losses: document.getElementById("losses"),
   eloDiff: document.getElementById("eloDiff"),
   winrateFill: document.getElementById("winrateFill"),
-  winratePercent: document.getElementById("winratePercent")
+  winratePercent: document.getElementById("winratePercent"),
+  screenFlash: document.getElementById("screenFlash")
 };
 
-let previousElo = null;
+let previousData = {
+  elo: null,
+  wins: null,
+  losses: null
+};
 
-function flashUpdate(element) {
-  element.classList.add('update-flash');
-  setTimeout(() => element.classList.remove('update-flash'), 400);
+function triggerScreenFlash(isWin) {
+  elements.screenFlash.className = isWin ? 'flash-win' : 'flash-loss';
+  setTimeout(() => {
+    elements.screenFlash.className = '';
+  }, 600);
 }
 
-function pulseElo(element) {
-  element.classList.add('elo-pulse');
-  setTimeout(() => element.classList.remove('elo-pulse'), 500);
+function animateEloChange(isGain) {
+  elements.elo.classList.add(isGain ? 'elo-gain' : 'elo-loss');
+  setTimeout(() => {
+    elements.elo.classList.remove('elo-gain', 'elo-loss');
+  }, 800);
+}
+
+function animateWinLoss(type) {
+  const element = type === 'win' ? elements.wins.parentElement : elements.losses.parentElement;
+  element.classList.add(type === 'win' ? 'win-bounce' : 'loss-bounce');
+  setTimeout(() => {
+    element.classList.remove('win-bounce', 'loss-bounce');
+  }, 600);
 }
 
 async function updateFaceit() {
@@ -366,11 +537,32 @@ async function updateFaceit() {
     const res = await fetch(API_URL);
     const d = await res.json();
     
-    if (previousElo !== null && previousElo !== d.elo) {
-      pulseElo(elements.elo);
-    }
-    previousElo = d.elo;
+    // Detektáljuk a változásokat
+    const eloChanged = previousData.elo !== null && previousData.elo !== d.elo;
+    const winChanged = previousData.wins !== null && previousData.wins !== d.results.wins;
+    const lossChanged = previousData.losses !== null && previousData.losses !== d.results.losses;
     
+    // ELO változás animáció
+    if (eloChanged) {
+      const isGain = d.elo > previousData.elo;
+      animateEloChange(isGain);
+      elements.elo.classList.add('elo-pulse');
+      setTimeout(() => elements.elo.classList.remove('elo-pulse'), 600);
+    }
+    
+    // Win változás
+    if (winChanged && d.results.wins > previousData.wins) {
+      triggerScreenFlash(true);
+      animateWinLoss('win');
+    }
+    
+    // Loss változás
+    if (lossChanged && d.results.losses > previousData.losses) {
+      triggerScreenFlash(false);
+      animateWinLoss('loss');
+    }
+    
+    // Adatok frissítése
     elements.lvl.textContent = d.lvl;
     elements.elo.textContent = d.elo;
     elements.wins.textContent = d.results.wins;
@@ -381,6 +573,39 @@ async function updateFaceit() {
     const winrate = totalGames > 0 ? (d.results.wins / totalGames * 100) : 0;
     elements.winrateFill.style.width = winrate + '%';
     elements.winratePercent.textContent = winrate.toFixed(0) + '%';
+    
+    // ELO különbség megjelenítés
+    const diff = d.todayEloDiff;
+    if (diff && diff.startsWith("+")) {
+      elements.eloDiff.innerHTML = `<span class="green">▲ ${diff} today</span>`;
+    } else if (diff && diff.startsWith("-")) {
+      elements.eloDiff.innerHTML = `<span class="red">▼ ${diff} today</span>`;
+    } else {
+      elements.eloDiff.innerHTML = `<span style="color: rgba(255,255,255,0.25); font-size: 11px;">—</span>`;
+    }
+    
+    // Előző adatok mentése
+    previousData = {
+      elo: d.elo,
+      wins: d.results.wins,
+      losses: d.results.losses
+    };
+    
+  } catch (e) {
+    console.error('API Error:', e);
+    elements.elo.textContent = "ERR";
+  }
+}
+
+// Első betöltés
+updateFaceit();
+
+// Azonnali frissítés - 3 másodpercenként
+setInterval(updateFaceit, 3000);
+</script>
+
+</body>
+</html>
     
     // ELO különbség
     const diff = d.todayEloDiff;
