@@ -2,6 +2,7 @@
 <html lang="hu">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080">
 <title>FACEIT HUD</title>
 <style>
 * {
@@ -11,25 +12,28 @@
 }
 
 body {
+  width: 1920px;
+  height: 1080px;
   background: transparent;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   color: #fff;
   overflow: hidden;
 }
 
 #hud {
   position: absolute;
-  top: 28px;
-  left: 28px;
-  background: linear-gradient(145deg, #0a0d12 0%, #14161f 100%);
+  top: 30px;
+  left: 30px;
+  background: linear-gradient(145deg, rgba(10, 13, 18, 0.95) 0%, rgba(20, 22, 31, 0.95) 100%);
   border-radius: 12px;
-  border: 1px solid rgba(255, 85, 0, 0.25);
+  border: 1px solid rgba(255, 85, 0, 0.3);
   box-shadow: 
-    0 12px 48px rgba(0, 0, 0, 0.8),
-    0 0 0 1px rgba(255, 85, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    0 12px 48px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(255, 85, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   overflow: hidden;
   width: 320px;
+  backdrop-filter: blur(10px);
 }
 
 .accent-bar {
@@ -38,8 +42,8 @@ body {
   background-size: 200% 100%;
   animation: shimmer 3s ease-in-out infinite;
   box-shadow: 
-    0 0 12px rgba(255, 85, 0, 0.6),
-    0 0 24px rgba(255, 85, 0, 0.3);
+    0 0 12px rgba(255, 85, 0, 0.7),
+    0 0 24px rgba(255, 85, 0, 0.4);
 }
 
 @keyframes shimmer {
@@ -49,8 +53,8 @@ body {
 
 .hud-header {
   padding: 16px 22px;
-  background: linear-gradient(135deg, rgba(255, 85, 0, 0.08) 0%, rgba(255, 85, 0, 0.02) 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.1) 0%, rgba(255, 85, 0, 0.03) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -68,8 +72,8 @@ body {
   font-size: 15px;
   letter-spacing: -0.5px;
   box-shadow: 
-    0 4px 12px rgba(255, 85, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 4px 12px rgba(255, 85, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
     inset 0 -2px 0 rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
@@ -82,7 +86,7 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.15), transparent);
   animation: shine 3s ease-in-out infinite;
 }
 
@@ -100,10 +104,7 @@ body {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.8) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #fff;
   line-height: 1;
 }
 
@@ -125,9 +126,9 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 18px;
-  background: linear-gradient(135deg, rgba(255, 85, 0, 0.06) 0%, rgba(255, 85, 0, 0.02) 100%);
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.08) 0%, rgba(255, 85, 0, 0.03) 100%);
   border-radius: 10px;
-  border: 1px solid rgba(255, 85, 0, 0.15);
+  border: 1px solid rgba(255, 85, 0, 0.18);
   margin-bottom: 16px;
   position: relative;
   overflow: hidden;
@@ -140,8 +141,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 30% 50%, rgba(255, 85, 0, 0.1) 0%, transparent 70%);
-  opacity: 0.5;
+  background: radial-gradient(circle at 30% 50%, rgba(255, 85, 0, 0.12) 0%, transparent 70%);
+  opacity: 0.6;
 }
 
 .elo-info {
@@ -157,7 +158,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .elo-value {
@@ -167,14 +168,14 @@ body {
   line-height: 1;
   letter-spacing: -1.5px;
   text-shadow: 
-    0 0 20px rgba(255, 85, 0, 0.4),
-    0 2px 4px rgba(0, 0, 0, 0.5);
+    0 0 20px rgba(255, 85, 0, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.6);
   transition: all 0.3s ease;
 }
 
 .level-badge {
-  background: linear-gradient(135deg, rgba(255, 85, 0, 0.25) 0%, rgba(255, 85, 0, 0.12) 100%);
-  border: 2px solid rgba(255, 85, 0, 0.4);
+  background: linear-gradient(135deg, rgba(255, 85, 0, 0.28) 0%, rgba(255, 85, 0, 0.14) 100%);
+  border: 2px solid rgba(255, 85, 0, 0.45);
   border-radius: 8px;
   padding: 8px 12px;
   display: flex;
@@ -185,8 +186,8 @@ body {
   position: relative;
   z-index: 1;
   box-shadow: 
-    0 4px 12px rgba(255, 85, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 4px 12px rgba(255, 85, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .level-label {
@@ -202,7 +203,7 @@ body {
   font-weight: 900;
   color: #FF5500;
   line-height: 1;
-  text-shadow: 0 0 12px rgba(255, 85, 0, 0.5);
+  text-shadow: 0 0 12px rgba(255, 85, 0, 0.6);
 }
 
 /* ELO Diff */
@@ -216,11 +217,11 @@ body {
 
 /* Win/Loss Section */
 .winloss-section {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 16px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 .winloss-label {
@@ -228,7 +229,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.2px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.5);
   margin-bottom: 10px;
   text-align: center;
 }
@@ -251,7 +252,6 @@ body {
 .stat-number {
   font-size: 26px;
   font-weight: 800;
-  text-shadow: 0 2px 8px currentColor;
 }
 
 .stat-label {
@@ -262,7 +262,7 @@ body {
 }
 
 .separator {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.3);
   font-size: 20px;
   font-weight: 300;
 }
@@ -271,12 +271,12 @@ body {
 .winrate-bar {
   width: 100%;
   height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 4px;
   overflow: hidden;
   position: relative;
   margin-top: 10px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .winrate-fill {
@@ -284,7 +284,7 @@ body {
   background: linear-gradient(90deg, #4ade80 0%, #22c55e 100%);
   transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 4px;
-  box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.7);
   position: relative;
 }
 
@@ -295,7 +295,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   animation: progress-shine 2s ease-in-out infinite;
 }
 
@@ -310,12 +310,18 @@ body {
   font-weight: 700;
   color: #4ade80;
   margin-top: 8px;
-  text-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
 }
 
-.orange { color: #FF5500; }
-.green { color: #4ade80; }
-.red { color: #f87171; }
+.green { 
+  color: #4ade80;
+  text-shadow: 0 0 12px rgba(74, 222, 128, 0.6);
+}
+
+.red { 
+  color: #f87171;
+  text-shadow: 0 0 12px rgba(248, 113, 113, 0.6);
+}
 
 /* Glow */
 #glow {
@@ -325,8 +331,8 @@ body {
   width: 440px;
   height: 440px;
   border-radius: 26px;
-  background: radial-gradient(circle, rgba(255, 85, 0, 0.4) 0%, rgba(168, 85, 247, 0.3) 50%, rgba(0, 240, 255, 0.2) 100%);
-  filter: blur(40px);
+  background: radial-gradient(circle, rgba(255, 85, 0, 0.45) 0%, rgba(168, 85, 247, 0.35) 50%, rgba(0, 240, 255, 0.25) 100%);
+  filter: blur(45px);
   opacity: 0;
   animation: glowPulse 5s ease-in-out infinite;
   pointer-events: none;
@@ -334,25 +340,16 @@ body {
 
 @keyframes glowPulse {
   0%, 100% { 
-    opacity: 0.2;
-    transform: scale(0.95) rotate(0deg);
+    opacity: 0.22;
+    transform: scale(0.96) rotate(0deg);
   }
   50% { 
-    opacity: 0.4;
-    transform: scale(1.05) rotate(10deg);
+    opacity: 0.45;
+    transform: scale(1.06) rotate(10deg);
   }
 }
 
 /* Animációk */
-.update-flash {
-  animation: flash 0.5s ease;
-}
-
-@keyframes flash {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
-}
-
 .elo-pulse {
   animation: eloPulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -362,7 +359,6 @@ body {
   50% { transform: scale(1.15); }
 }
 
-/* Win/Loss change animációk */
 .win-bounce {
   animation: winBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -370,8 +366,8 @@ body {
 @keyframes winBounce {
   0%, 100% { transform: scale(1); }
   50% { 
-    transform: scale(1.3);
-    filter: drop-shadow(0 0 16px #4ade80);
+    transform: scale(1.35);
+    filter: drop-shadow(0 0 20px #4ade80);
   }
 }
 
@@ -382,12 +378,11 @@ body {
 @keyframes lossBounce {
   0%, 100% { transform: scale(1); }
   50% { 
-    transform: scale(1.3);
-    filter: drop-shadow(0 0 16px #f87171);
+    transform: scale(1.35);
+    filter: drop-shadow(0 0 20px #f87171);
   }
 }
 
-/* Pozitív ELO változás */
 .elo-gain {
   animation: eloGain 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -398,7 +393,6 @@ body {
   100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
-/* Negatív ELO változás */
 .elo-loss {
   animation: eloLoss 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -409,15 +403,15 @@ body {
   100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
-/* Screen flash efekt win/loss-hoz */
 #screenFlash {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 1920px;
+  height: 1080px;
   pointer-events: none;
   opacity: 0;
+  z-index: 9999;
 }
 
 .flash-win {
@@ -425,7 +419,7 @@ body {
 }
 
 @keyframes flashWin {
-  0% { background: rgba(74, 222, 128, 0.3); opacity: 1; }
+  0% { background: rgba(74, 222, 128, 0.35); opacity: 1; }
   100% { background: rgba(74, 222, 128, 0); opacity: 0; }
 }
 
@@ -434,7 +428,7 @@ body {
 }
 
 @keyframes flashLoss {
-  0% { background: rgba(248, 113, 113, 0.3); opacity: 1; }
+  0% { background: rgba(248, 113, 113, 0.35); opacity: 1; }
   100% { background: rgba(248, 113, 113, 0); opacity: 0; }
 }
 </style>
@@ -581,7 +575,7 @@ async function updateFaceit() {
     } else if (diff && diff.startsWith("-")) {
       elements.eloDiff.innerHTML = `<span class="red">▼ ${diff} today</span>`;
     } else {
-      elements.eloDiff.innerHTML = `<span style="color: rgba(255,255,255,0.25); font-size: 11px;">—</span>`;
+      elements.eloDiff.innerHTML = `<span style="color: rgba(255,255,255,0.3); font-size: 11px;">—</span>`;
     }
     
     // Előző adatok mentése
@@ -592,8 +586,9 @@ async function updateFaceit() {
     };
     
   } catch (e) {
-    console.error('API Error:', e);
+    console.error('FACEIT API Error:', e);
     elements.elo.textContent = "ERR";
+    elements.eloDiff.innerHTML = `<span style="color: #f87171; font-size: 11px;">Connection failed</span>`;
   }
 }
 
@@ -602,31 +597,6 @@ updateFaceit();
 
 // Azonnali frissítés - 3 másodpercenként
 setInterval(updateFaceit, 3000);
-</script>
-
-</body>
-</html>
-    
-    // ELO különbség
-    const diff = d.todayEloDiff;
-    if (diff && diff.startsWith("+")) {
-      elements.eloDiff.innerHTML = `<span class="green">▲ ${diff} today</span>`;
-      flashUpdate(elements.eloDiff);
-    } else if (diff && diff.startsWith("-")) {
-      elements.eloDiff.innerHTML = `<span class="red">▼ ${diff} today</span>`;
-      flashUpdate(elements.eloDiff);
-    } else {
-      elements.eloDiff.innerHTML = `<span style="color: rgba(255,255,255,0.3); font-size: 11px;">No change</span>`;
-    }
-    
-  } catch (e) {
-    console.error('API Error:', e);
-    elements.elo.textContent = "ERR";
-  }
-}
-
-updateFaceit();
-setInterval(updateFaceit, 60000);
 </script>
 
 </body>
